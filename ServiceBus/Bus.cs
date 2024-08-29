@@ -13,20 +13,20 @@ namespace ServiceBus
     {
         public Task Send<T>(T message, string exchangeName) where T : class
         {
-            using var channel = GetChannel();
-            channel.ConfirmSelect();
+            //using var channel = GetChannel();
+            //channel.ConfirmSelect();
 
-            channel.ExchangeDeclare(exchange: exchangeName, type: ExchangeType.Fanout);
+            //channel.ExchangeDeclare(exchange: exchangeName, type: ExchangeType.Fanout);
 
-            var body = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(message));
+            //var body = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(message));
 
 
-            channel.BasicPublish(exchange:exchangeName,
-                routingKey:"",
-                basicProperties:null,
-                body:body);
+            //channel.BasicPublish(exchange:exchangeName,
+            //    routingKey:"",
+            //    basicProperties:null,
+            //    body:body);
 
-            channel.WaitForConfirms(timeout:TimeSpan.FromMinutes(1)); //rabbitmq mesajı başarılı olarak kaydedene kadar bekler.
+            //channel.WaitForConfirms(timeout:TimeSpan.FromMinutes(1)); //rabbitmq mesajı başarılı olarak kaydedene kadar bekler.
             return Task.CompletedTask;
 
         }

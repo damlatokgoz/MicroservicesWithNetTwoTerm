@@ -11,6 +11,7 @@ namespace ServiceBus
         public const string OrderCreatedEventExchange = "order.api.order.created.event.exchange";
 
         public const string StockCreatedEventQueue = "stock.api.order.created.event.queue";
+        public const string StockCreatedEventQueueMassTransit = "stock.api.order.created.event.masstransit.queue";
 
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Order.Service
 {
-    public class OrderService(ServiceBus.IBus bus, IPublishEndpoint publishEndpoint) : IOrderService
+    public class OrderService(ServiceBus.IBus bus, IPublishEndpoint publishEndpoint, StockService stockService) : IOrderService
     {
         public async Task Create()
         {
@@ -18,6 +18,10 @@ namespace Order.Service
             });
 
             // await bus.Send(orderCreatedEvent, BusConstants.OrderCreatedEventExchange);
+
+            var result = stockService.CheckStock(1,5);
+
+
 
             CancellationTokenSource cancellationTokenSource = new();
             cancellationTokenSource.CancelAfter(delay: TimeSpan.FromSeconds(60));

@@ -26,7 +26,7 @@ builder.Services.AddMassTransit(configure =>
         cfg.UseMessageRetry(configure: r => r.Interval(5, TimeSpan.FromSeconds(5)));
 
 
-        cfg.UseInMemoryOutbox(context)
+        cfg.UseInMemoryOutbox(context);
 
         var busOptions = builder.Configuration.GetSection(key: nameof(BusOptions)).Get<BusOptions>();
 
